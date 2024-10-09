@@ -1,7 +1,7 @@
 <?php
 // Variáveis PHP para personalizar o conteúdo da página
 $siteTitle = "Exemplo de HTML e PHP integrados";
-$pageHeading = "Bem vindo ao meu Site";
+$pageHeading = "Bem vindo ao meu Site Especial";
 $introText = "Aqui você encontra informações e imagens interessantes, tudo gerado com PHP.";
 ?>
 <!DOCTYPE html>
@@ -20,8 +20,8 @@ $introText = "Aqui você encontra informações e imagens interessantes, tudo ge
 <body>
     <!-- Cabeçalho do site -->
     <header id="home">
-        <h1 class="animate__animated animate__bounceIn">Bem-vindo</h1>
-        <p class="animate__animated animate__fadeInUp">Aqui você encontra informações e imagens interessantes.</p>
+        <h1 class="animate__animated animate__bounceIn"><?php echo $pageHeading ?></h1>
+        <p class="animate__animated animate__fadeInUp"><?php echo $introText ?></p>
     </header>
 
     <!-- Menu de navegação -->
@@ -41,10 +41,19 @@ $introText = "Aqui você encontra informações e imagens interessantes, tudo ge
         <section id="gallery">
             <h2 class="animate__animated animate__fadeInDown">Galeria de Imagens</h2>
             <div class="gallery-container">
-                <img class="animate__animated animate__fadeInUp" src="https://via.placeholder.com/150" alt="Imagem 1">
+                <!-- <img class="animate__animated animate__fadeInUp" src="https://via.placeholder.com/150" alt="Imagem 1">
                 <img class="animate__animated animate__fadeInUp" src="https://via.placeholder.com/150" alt="Imagem 2">
                 <img class="animate__animated animate__fadeInUp" src="https://via.placeholder.com/150" alt="Imagem 3">
-                <img class="animate__animated animate__fadeInUp" src="https://via.placeholder.com/150" alt="Imagem 4">
+                <img class="animate__animated animate__fadeInUp" src="https://via.placeholder.com/150" alt="Imagem 4"> -->
+                <?php
+                // Gerando imagens dinamicamente com PHP
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<img class='animate__animated animate__fadeInUp' src='https://via.placeholder.com/150' alt='Imagem $i'>";
+                }
+
+                ?>
+
+
             </div>
         </section>
 
@@ -56,8 +65,9 @@ $introText = "Aqui você encontra informações e imagens interessantes, tudo ge
                     <th>Nome</th>
                     <th>Idade</th>
                     <th>Profissão</th>
+                    <th>Situação</th>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td>João Silva</td>
                     <td>30</td>
                     <td>Engenheiro</td>
@@ -71,7 +81,25 @@ $introText = "Aqui você encontra informações e imagens interessantes, tudo ge
                     <td>Pedro Costa</td>
                     <td>35</td>
                     <td>Desenvolvedor</td>
-                </tr>
+                </tr> -->
+                <?php
+                // Dados fictícios em PHP
+                $dados = [
+                    ["João Silva", 30, "Engenheiro", "Empregado"],
+                    ["Maria Oliveira", 28, "Designer", "Empregado"],
+                    ["Pedro Costa", 35, "Desenvolvedor", "Desempregado"]
+                ];
+                // Gerar linhas da tabela dinamicamente
+                foreach ($dados as $pessoa) {
+                    echo "<tr>";
+                    foreach ($pessoa as $info){
+                        echo "<td> $info</td>";
+                    }
+                    echo "</tr>";
+                }
+                ?>
+
+
             </table>
         </section>
     </main>
